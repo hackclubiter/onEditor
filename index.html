@@ -1,0 +1,142 @@
+<head>
+    <title>Online Compiler</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body style="background-color: #E5E7E9; font-family:courier,arial,helvetica; margin: 40px;" >
+    <h2>Online Compiler</h2>
+
+    <h4>Source Code</h4>
+    <textarea id="source" style="width: calc(100% - 40px); height: 40%; resize: vertical;">
+class Main {
+  public static void main(String[] args) {
+
+    int num = 1234, reversed = 0;
+
+    while(num != 0) {
+    
+      int digit = num % 10;
+      reversed = reversed * 10 + digit;
+      num /= 10;
+    }
+
+    System.out.println("Reversed Number: " + reversed);
+  }
+}
+    </textarea>
+
+    <h4>Language</h4>
+    <select id="lang">
+	<option selected>Java</option>
+	<option>Python</option>
+        <option>C++</option>
+        <option>C</option>
+    </select>
+
+    <h4>Input</h4>
+    <textarea id="input" style="width: calc(100% - 40px); height: 10%; resize: vertical;"></textarea>
+
+    </br></br>
+    <button id="run" onclick="run()">▶️ Run</button>
+
+    <textarea readonly id="output" style="width: calc(100% - 40px); height: 20%; top: 0; right: 0; resize: vertical;"></textarea>
+
+    <script type="text/javascript">
+        API_KEY = "34c8103e63msh909728bfda25be5p1bb0fbjsnd587398101bf"; // I'm sharing it cuz I subscribed to free Judge0 service, but keep it PRIVATE!
+
+        var language_to_id = {
+            "C": 50,
+            "C++": 54,
+            "Java": 62,
+            "Python": 71,
+        };
+
+        function encode(str) {
+            return btoa(unescape(encodeURIComponent(str || "")));
+        }
+
+        function decode(bytes) {
+            var escaped = escape(atob(bytes || ""));
+            try {
+                return decodeURIComponent(escaped);
+            } catch {
+                return unescape(escaped);
+            }
+        }
+
+        function errorHandler(jqXHR, textStatus, errorThrown) {
+            $("#output").val(`${JSON.stringify(jqXHR, null, 4)}`);
+            $("#run").prop("disabled", false);
+        }
+
+        function check(token) {
+            $("#output").val($("#output").val() + "\nChecking submission status...");
+            $.ajax({
+                url: `https://judge0-ce.p.rapidapi.com/submissions/${token}?base64_encoded=true`,
+                type: "GET",
+                headers: {
+                    "x-rapidapi-host": "judge0-ce.p.rapidapi.com",
+	                "x-rapidapi-key": API_KEY
+                },
+                success: function (data, textStatus, jqXHR) {
+                    if ([1, 2].includes(data["status"]["id"])) {
+                        $("#output").val($("#output").val() + "\nStatus: " + data["status"]["description"]);
+                        setTimeout(function() { check(token) }, 1000);
+                    }
+                    else {
+                        var output = [decode(data["compile_output"]), decode(data["stdout"])].join("\n").trim();
+                        $("#output").val(output);
+                        $("#run").prop("disabled", false);
+                    }
+                },
+                error: errorHandler
+            });
+        }
+
+        function run() {
+            $("#run").prop("disabled", true);
+            $("#output").val("Creating submission...");
+            $.ajax({
+                url: "https://judge0-ce.p.rapidapi.com/submissions?base64_encoded=true",
+                type: "POST",
+                contentType: "application/json",
+                headers: {
+                    "x-rapidapi-host": "judge0-ce.p.rapidapi.com",
+	                "x-rapidapi-key": API_KEY
+                },
+                data: JSON.stringify({
+                    "language_id": language_to_id[$("#lang").val()],
+                    "source_code": encode($("#source").val()),
+                    "stdin": encode($("#input").val()),
+                    "redirect_stderr_to_stdout": true
+                }),
+                success: function(data, textStatus, jqXHR) {
+                    $("#output").val($("#output").val() + "\nSubmission created.");
+                    setTimeout(function() { check(data["token"]) }, 2000);
+                },
+                error: errorHandler
+            });
+        }
+
+        $("body").keydown(function (e) {
+            if (e.ctrlKey && e.keyCode == 13) {
+                run();
+            }
+        });
+
+        $("textarea").keydown(function (e) {
+            if (e.keyCode == 9) {
+                e.preventDefault();
+                var start = this.selectionStart;
+                var end = this.selectionEnd;
+
+                var append = "    ";
+                $(this).val($(this).val().substring(0, start) + append + $(this).val().substring(end));
+
+                this.selectionStart = this.selectionEnd = start + append.length;
+            }
+        });
+
+        $("#source").focus();
+    </script>
+</body>
