@@ -1,26 +1,30 @@
 <head>
     <title>Online Compiler</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
-
 <body style="background-color: #E5E7E9; font-family:courier,arial,helvetica; margin: 40px;" >
     <h2>Online Compiler</h2>
 
     <h4>Source Code</h4>
     <textarea id="source" style="width: calc(100% - 40px); height: 40%; resize: vertical;">
-class Main {
-  public static void main(String[] args) {
+import java.util.Scanner;
+class Main
+{
+  public static void main(String args[])
+  {
+    int n, reverse = 0;
+    Scanner in = new Scanner(System.in);
+    n = in.nextInt();
 
-    int num = 1234, reversed = 0;
-
-    while(num != 0) {
-    
-      int digit = num % 10;
-      reversed = reversed * 10 + digit;
-      num /= 10;
+    while(n != 0)
+    {
+      reverse = reverse * 10;
+      reverse = reverse + n%10;
+      n = n/10;
     }
 
-    System.out.println("Reversed Number: " + reversed);
+    System.out.println("Reverse of the number is " + reverse);
   }
 }
     </textarea>
@@ -42,7 +46,7 @@ class Main {
     <textarea readonly id="output" style="width: calc(100% - 40px); height: 20%; top: 0; right: 0; resize: vertical;"></textarea>
 
     <script type="text/javascript">
-        API_KEY = "34c8103e63msh909728bfda25be5p1bb0fbjsnd587398101bf"; // I'm sharing it cuz I subscribed to free Judge0 service, but keep it PRIVATE!
+        API_KEY = "34c8103e63msh909728bfda25be5p1bb0fbjsnd587398101bf"; // Get yours for free at https://judge0.com/ce or https://judge0.com/extra-ce
 
         var language_to_id = {
             "C": 50,
