@@ -1,146 +1,45 @@
-<head>
-    <title>Online Compiler</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-</head>
-<body style="background-color: #E5E7E9; font-family:courier,arial,helvetica; margin: 40px;" >
-    <h2>Online Compiler</h2>
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <title>Online Compiler</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="./CSS/style.css" />
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link rel="shortcut icon" href="https://avatars.githubusercontent.com/u/73450347?s=100&v=4" type="image/x-icon">
+ </head>
 
-    <h4>Source Code</h4>
-    <textarea id="source" style="width: calc(100% - 40px); height: 40%; resize: vertical;">
-import java.util.Scanner;
-class Main
-{
-  public static void main(String args[])
-  {
-    int n, reverse = 0;
-    Scanner in = new Scanner(System.in);
-    n = in.nextInt();
+ <body>
+    <div class="container">
+    
+        <h1 class="brand-title">Online IDE</h1>
+        
+        <h4>Source Code</h4>
 
-    while(n != 0)
-    {
-      reverse = reverse * 10;
-      reverse = reverse + n%10;
-      n = n/10;
-    }
+        <textarea id="source">
+print("hi")
+print(1+1)
+        </textarea>
 
-    System.out.println("Reverse of the number is " + reverse);
-  }
-}
-    </textarea>
+        <h4>Language</h4>
 
-    <h4>Language</h4>
-    <select id="lang">
-	<option selected>Java</option>
-	<option>Python</option>
-        <option>C++</option>
-        <option>C</option>
-    </select>
-
-    <h4>Input</h4>
-    <textarea id="input" style="width: calc(100% - 40px); height: 10%; resize: vertical;"></textarea>
-
-    </br></br>
-    <button id="run" onclick="run()">▶️ Run</button>
-
-    <textarea readonly id="output" style="width: calc(100% - 40px); height: 20%; top: 0; right: 0; resize: vertical;"></textarea>
-
-    <script type="text/javascript">
-        API_KEY = "34c8103e63msh909728bfda25be5p1bb0fbjsnd587398101bf"; // PLEASE DON'T SHARE 
-
-        var language_to_id = {
-            "C": 50,
-            "C++": 54,
-            "Java": 62,
-            "Python": 71,
-        };
-
-        function encode(str) {
-            return btoa(unescape(encodeURIComponent(str || "")));
-        }
-
-        function decode(bytes) {
-            var escaped = escape(atob(bytes || ""));
-            try {
-                return decodeURIComponent(escaped);
-            } catch {
-                return unescape(escaped);
-            }
-        }
-
-        function errorHandler(jqXHR, textStatus, errorThrown) {
-            $("#output").val(`${JSON.stringify(jqXHR, null, 4)}`);
-            $("#run").prop("disabled", false);
-        }
-
-        function check(token) {
-            $("#output").val($("#output").val() + "\nChecking submission status...");
-            $.ajax({
-                url: `https://judge0-ce.p.rapidapi.com/submissions/${token}?base64_encoded=true`,
-                type: "GET",
-                headers: {
-                    "x-rapidapi-host": "judge0-ce.p.rapidapi.com",
-	                "x-rapidapi-key": API_KEY
-                },
-                success: function (data, textStatus, jqXHR) {
-                    if ([1, 2].includes(data["status"]["id"])) {
-                        $("#output").val($("#output").val() + "\nStatus: " + data["status"]["description"]);
-                        setTimeout(function() { check(token) }, 1000);
-                    }
-                    else {
-                        var output = [decode(data["compile_output"]), decode(data["stdout"])].join("\n").trim();
-                        $("#output").val(output);
-                        $("#run").prop("disabled", false);
-                    }
-                },
-                error: errorHandler
-            });
-        }
-
-        function run() {
-            $("#run").prop("disabled", true);
-            $("#output").val("Creating submission...");
-            $.ajax({
-                url: "https://judge0-ce.p.rapidapi.com/submissions?base64_encoded=true",
-                type: "POST",
-                contentType: "application/json",
-                headers: {
-                    "x-rapidapi-host": "judge0-ce.p.rapidapi.com",
-	                "x-rapidapi-key": API_KEY
-                },
-                data: JSON.stringify({
-                    "language_id": language_to_id[$("#lang").val()],
-                    "source_code": encode($("#source").val()),
-                    "stdin": encode($("#input").val()),
-                    "redirect_stderr_to_stdout": true
-                }),
-                success: function(data, textStatus, jqXHR) {
-                    $("#output").val($("#output").val() + "\nSubmission created.");
-                    setTimeout(function() { check(data["token"]) }, 2000);
-                },
-                error: errorHandler
-            });
-        }
-
-        $("body").keydown(function (e) {
-            if (e.ctrlKey && e.keyCode == 13) {
-                run();
-            }
-        });
-
-        $("textarea").keydown(function (e) {
-            if (e.keyCode == 9) {
-                e.preventDefault();
-                var start = this.selectionStart;
-                var end = this.selectionEnd;
-
-                var append = "    ";
-                $(this).val($(this).val().substring(0, start) + append + $(this).val().substring(end));
-
-                this.selectionStart = this.selectionEnd = start + append.length;
-            }
-        });
-
-        $("#source").focus();
-    </script>
-</body>
+            <select id="lang">
+                <option selected="selected">Python</option>
+                <option>Java</option>
+                <option>C++</option>
+                <option>C</option>
+            </select>
+    
+        <h4>Input</h4>
+        <textarea id="input"></textarea>
+        
+        <h4>Output</h4>
+        <button id="run" onclick="run()">▶️ Run</button>
+    
+    <textarea readonly="readonly" id="output"></textarea>
+    <p>Copyright of Hack Club ITER 2021</p>
+   <script src="./JS/index.js"></script>
+  </div>
+ </body>
+</html>
