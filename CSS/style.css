@@ -69,6 +69,7 @@ p,label{
 textarea{
     display: block;
     width: 100%;
+    
     border-radius: 2px !important;
     padding: 0;
     margin-top: 10px;

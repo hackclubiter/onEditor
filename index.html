@@ -13,16 +13,10 @@
  <body>
     <div class="container">
     
-        <h1 class="brand-title">Online IDE</h1>
-        
-        <h4>Source Code</h4>
-
-        <textarea id="source">
-print("hi")
-print(1+1)
-        </textarea>
-
-        <h4>Language</h4>
+        <h1 class="brand-title">onEditor</h1>
+        <h4>Hack Club ITER</h4>
+        <div class="select">
+            <h4>Language</h4>
 
             <select id="lang">
                 <option selected="selected">Python</option>
@@ -30,15 +24,32 @@ print(1+1)
                 <option>C++</option>
                 <option>C</option>
             </select>
+        </div>
+
+    <div class="source_code">
+        <textarea id="source" class="textarea_code" style="height: 200px;">
+print("hi")
+print(1+1)
+        </textarea>
+    </div>
+
+    <div class="code_input">
+        <textarea id="input" placeholder="Input"></textarea>
+    </div>
+
+    <div class="code_output">
+        <textarea readonly="readonly" id="output" style="height: 200px;" placeholder="Ouput"></textarea>
+    </div>
     
-        <h4>Input</h4>
-        <textarea id="input"></textarea>
-        
-        <h4>Output</h4>
-        <button id="run" onclick="run()">▶️ Run</button>
-    
-    <textarea readonly="readonly" id="output"></textarea>
-    <p>Copyright of Hack Club ITER 2021</p>
+    <button id="run" onclick="run()">
+        ▶️ Run
+    </button>
+
+    <footer>
+        <p style="font-size: smaller;"> Made with <span style="color: orange;">❤</span>  by <a href="https://github.com/saswatsamal" style="color: aliceblue; text-decoration: none;">Saswat Samal</a> & <a href="https://github.com/saswatsamal" style="color: aliceblue; text-decoration: none;">Bravish Ghosh</a></p>
+        <p>Copyright of Hack Club ITER 2021</p>
+    </footer>
+
    <script src="./JS/index.js"></script>
   </div>
  </body>
