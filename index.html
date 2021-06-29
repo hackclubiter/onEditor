@@ -13,16 +13,8 @@
  <body>
     <div class="container">
     
-        <h1 class="brand-title">Online IDE</h1>
-        
-        <h4>Source Code</h4>
-
-        <textarea id="source">
-print("hi")
-print(1+1)
-        </textarea>
-
-        <h4>Language</h4>
+        <h1 class="brand-title">onEditor</h1>
+        <h4 style="font-size: 1rem; margin-bottom: 0.8vh;">Language</h4>
 
             <select id="lang">
                 <option selected="selected">Python</option>
@@ -31,13 +23,17 @@ print(1+1)
                 <option>C</option>
             </select>
     
-        <h4>Input</h4>
-        <textarea id="input"></textarea>
-        
-        <h4>Output</h4>
+
+        <textarea id="source">
+print("hi")
+print(1+1)
+        </textarea>
+
+
+        <textarea id="input" placeholder="Input" style="height: 50px !important;"></textarea>  
+
+        <textarea readonly="readonly" id="output" placeholder="Output"></textarea>
         <button id="run" onclick="run()">▶️ Run</button>
-    
-    <textarea readonly="readonly" id="output"></textarea>
     <p>Copyright of Hack Club ITER 2021</p>
    <script src="./JS/index.js"></script>
   </div>
