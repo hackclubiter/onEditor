@@ -5,9 +5,7 @@
     font-style: normal;
     font-display: swap;
 }
-textarea::-webkit-scrollbar {
-    display: none;
-}
+
 body {
     margin: 0;
     width: 100vw;
@@ -18,7 +16,6 @@ body {
     text-align: center;
     justify-content: center;
     place-items: center;
-    overflow: hidden;
     font-family: Phantom Sans;
 }
 .container {
@@ -30,13 +27,15 @@ body {
     box-sizing: border-box;
     background: #252429;
     color: #ecf0f3;
+    position: absolute;
+    
 }
 .brand-logo {
-    height: 100px;
-    width: 100px;
-    background: url("https://avatars.githubusercontent.com/u/73450347?s=100&v=4");
+    height: 70px;
+    width: 70px;
+    background: url("https://avatars.githubusercontent.com/u/73450347?s=70&v=4");
     margin: auto;
-    border-radius: 50%;
+    border-radius: 30%;
     box-sizing: border-box;
 }
 .brand-title {
@@ -68,7 +67,7 @@ p,label{
 }
 textarea{
     display: block;
-    width: 100%;
+    width: 100% !important;
     border-radius: 2px !important;
     padding: 0;
     margin-top: 10px;

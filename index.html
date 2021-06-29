@@ -6,39 +6,40 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <link rel="stylesheet" href="./CSS/style.css" />
   <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta http-equiv="X-UA-Compatible" content="" />
   <link rel="shortcut icon" href="https://avatars.githubusercontent.com/u/73450347?s=100&v=4" type="image/x-icon">
  </head>
 
  <body>
     <div class="container">
-    
-        <h1 class="brand-title">Online IDE</h1>
-        
-        <h4>Source Code</h4>
+        <div class="brand-logo"></div>
+        <h1 class="brand-title">onEditor</h1>
+        <h4 style="font-size: 1rem; margin-bottom: 0.8vh;">Language</h4>
 
-        <textarea id="source">
-print("hi")
-print(1+1)
-        </textarea>
-
-        <h4>Language</h4>
-
-            <select id="lang">
+            <select id="lang" style="width:100px; border-radius: 10px !important; height: 30px;">
                 <option selected="selected">Python</option>
                 <option>Java</option>
                 <option>C++</option>
                 <option>C</option>
             </select>
     
-        <h4>Input</h4>
-        <textarea id="input"></textarea>
-        
-        <h4>Output</h4>
+
+        <textarea id="source" style="height: 100px;">
+print("hi")
+print(1+1)
+        </textarea>
+
+
+        <textarea id="input" placeholder="Input" style="height: 50px !important;"></textarea>  
+
+        <textarea readonly="readonly" id="output" placeholder="Output" style="height: 100px;"></textarea>
         <button id="run" onclick="run()">▶️ Run</button>
-    
-    <textarea readonly="readonly" id="output"></textarea>
-    <p>Copyright of Hack Club ITER 2021</p>
+
+        <footer>
+            <p style="font-size: smaller;"> Made with <span style="color: orange;">❤</span>  by <a href="https://github.com/saswatsamal" style="color: aliceblue; text-decoration: none;">Saswat Samal</a> & <a href="https://github.com/LoopGlitch26" style="color: aliceblue; text-decoration: none;">Bravish Ghosh</a></p>
+            <p>Copyright of Hack Club ITER 2021</p>
+        </footer>
+
    <script src="./JS/index.js"></script>
   </div>
  </body>
