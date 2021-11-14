@@ -151,7 +151,6 @@ margin-right: 1em;
         display: flex;
         justify-content: center;
         align-items: center;
-
         background-color: #000000;
         color: #ecf0f3;
         position: absolute;
@@ -169,6 +168,9 @@ margin-right: 1em;
         display: none;
     }
     .container{
+        display: none;
+    }
+    footer{
         display: none;
     }
     
