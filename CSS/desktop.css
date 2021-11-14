@@ -1,0 +1,177 @@
+@font-face {
+    font-family: 'Phantom Sans';
+    src: url('https://assets.hackclub.com/fonts/Phantom_Sans_0.7/Bold.woff') format('woff'), url('https://assets.hackclub.com/fonts/Phantom_Sans_0.7/Bold.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+body {
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #121217;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    place-items: center;
+    font-family: Phantom Sans;
+}
+main{
+    box-sizing: border-box;
+    padding: 2em;
+    height: 100vh !important;
+    width: 100vw !important;
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1em;
+    background-color: #000000;
+}
+.header-left{
+    display: flex;
+    align-items: center;
+}
+.brand-logo img{
+    width: 80px;
+    height: 80px;
+    margin-right: 1em;
+    padding: 10px;
+}
+.brand-title{
+    font-size: 2em;
+    font-weight: bold;
+    color: #ecf0f3;
+}
+.header-right{
+    display: flex;
+    align-items: center;
+}
+.header-right .lang{
+    color: #ecf0f3;
+    font-size: 1.2em;
+    margin-right: 1em;
+    margin-bottom: 0.8vh
+}
+.header-right .options{
+margin-right: 1em;
+}
+.container {
+    display: grid; 
+    grid-auto-columns: 1fr; 
+    grid-template-columns: 1fr 1fr; 
+    grid-template-rows: 3fr 0.4fr; 
+    gap: 50px 15px; 
+    grid-template-areas: 
+      ". ."
+      ".  ."; 
+      margin-bottom: 100px;
+  }
+  .title{
+    grid-area: 1 / 1 / 2 / 2;
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: #ffffff;
+    letter-spacing: 1px;
+    padding: 5px;
+    
+  }
+  textarea{
+    grid-area: 1 / 1 / 2 / 2;
+    background-color: #ecf0f3;
+    color: #171717;
+    font-family: Consolas, monospace;
+    font-size: 18px;
+    padding: 10px;
+    border-radius: 2px;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+  }
+
+    .button-container{
+        grid-area: 2 / 2 / 3 / 3;
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        margin-top: 80px;
+        grid-gap: 10px;
+    }
+    .button{
+        font-family: Consolas, monospace;
+        font-size: 14px;
+        padding: 10px;
+        border-radius: 2px;
+        border: none;
+        outline: none;
+        box-sizing: border-box;
+        text-align: center;
+
+        background-image: radial-gradient( ellipse farthest-corner at top left, #ff8c37, #ec3750);
+        cursor: pointer;
+        font-weight: 900;
+        color: rgb(255, 255, 255);
+        transition: 0.5s;
+    }
+
+    footer{
+        position: relative;
+        bottom: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #ffffff;
+        font-size: 1.2em;
+    }
+    @media screen and (min-width: 601px) {
+        .error .message{
+            display: none;
+        }
+        .error-btn{
+            display: none;
+        }
+    
+    }
+@media screen and (max-width: 600px) {
+    body{
+        box-sizing: border-box;
+        padding: 0em;
+        background-color: #000000 !important;
+    }
+    .error{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #000000;
+        color: #ecf0f3;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        margin:50px ;
+
+    }
+    .error-btn{
+        display: flex;
+    }
+ 
+    .header{
+        display: none;
+    }
+    .container{
+        display: none;
+    }
+    footer{
+        display: none;
+    }
+    
+}
