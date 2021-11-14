@@ -18,6 +18,7 @@
     <div class="header">
         <div class="header-left">
             <div class="brand-logo">
+                <img src="https://avatars.githubusercontent.com/u/73450347?s=100&v=4" alt="">
             </div>
             <h1 class="brand-title">onEditor</h1>
         </div>
@@ -39,24 +40,25 @@
     <div class="container">
         <div class="code">
             <div class="code-title title">Code</div>
-            <textarea class="code-textarea">ss</textarea>
+            <textarea id="source" placeholder="Enter your code here" class="code-textarea"></textarea>
         </div>
         <div class="output">
             <div class="output-title title">Output</div>
-            <textarea class="output-textarea">ss</textarea>
+            <textarea readonly="readonly" id="output" placeholder="Output" class="output-textarea"></textarea>
         </div>
         <div class="button-container">
-            <button class="run-button button">Run</button>
+            <button id="run" onclick="run()" class="run-button button">Run</button>
             <button class="clear-button button">Clear</button>
         </div>
         <div class="input">
             <div class="input-title title">Input</div>
-            <textarea class="input-textarea"></textarea>
+            <textarea id="input" placeholder="Enter your input here" class="input-textarea"></textarea>
         </div>
     </div>
     <footer>
             <p>Copyright of Hack Club ITER 2021</p>
     </footer>
 </main>
+<script src="./JS/index.js"></script>
 </body>
 </html>
