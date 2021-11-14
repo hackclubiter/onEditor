@@ -1,46 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
- <head>
-  <title>Online Compiler</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <link rel="stylesheet" href="./CSS/style.css" />
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="" />
-  <link rel="shortcut icon" href="https://avatars.githubusercontent.com/u/73450347?s=100&v=4" type="image/x-icon">
- </head>
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
- <body>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="" />
+    <link rel="shortcut icon" href="https://avatars.githubusercontent.com/u/73450347?s=100&v=4" type="image/x-icon">
+    <link rel="stylesheet" href="./CSS/desktop.css">
+</head>
+<body>
+<main>
+    <div class="error">
+        <p class="message">Please use a larger device to open this else use our mobile version of this code editor.</p>
+        <a class="error-btn" href="./mob.html"><button>Go here</button></a>
+    </div>
+    <div class="header">
+        <div class="header-left">
+            <div class="brand-logo">
+            </div>
+            <h1 class="brand-title">onEditor</h1>
+        </div>
+        <div class="header-right">
+
+            <div class="lang">
+                <h4>Language</h4>
+            </div>
+            <div class="options">
+                <select id="lang" style="width:100px; border-radius: 10px !important; height: 30px;">
+                    <option selected="selected">Python</option>
+                    <option>Java</option>
+                    <option>C++</option>
+                    <option>C</option>
+                </select>
+            </div>
+        </div>
+    </div>
     <div class="container">
-        <div class="brand-logo"></div>
-        <h1 class="brand-title">onEditor</h1>
-        <h4 style="font-size: 1rem; margin-bottom: 0.8vh;">Language</h4>
-
-            <select id="lang" style="width:100px; border-radius: 10px !important; height: 30px;">
-                <option selected="selected">Python</option>
-                <option>Java</option>
-                <option>C++</option>
-                <option>C</option>
-            </select>
-    
-
-        <textarea id="source" style="height: 100px;">
-print("hi")
-print(1+1)
-        </textarea>
-
-
-        <textarea id="input" placeholder="Input" style="height: 50px !important;"></textarea>  
-
-        <textarea readonly="readonly" id="output" placeholder="Output" style="height: 100px;"></textarea>
-        <button id="run" onclick="run()">▶️ Run</button>
-
-        <footer>
-            <p style="font-size: smaller;"> Made with <span style="color: orange;">❤</span>  by <a href="https://github.com/saswatsamal" style="color: aliceblue; text-decoration: none;">Saswat Samal</a> & <a href="https://github.com/LoopGlitch26" style="color: aliceblue; text-decoration: none;">Bravish Ghosh</a></p>
+        <div class="code">
+            <div class="code-title title">Code</div>
+            <textarea class="code-textarea">ss</textarea>
+        </div>
+        <div class="output">
+            <div class="output-title title">Output</div>
+            <textarea class="output-textarea">ss</textarea>
+        </div>
+        <div class="button-container">
+            <button class="run-button button">Run</button>
+            <button class="clear-button button">Clear</button>
+        </div>
+        <div class="input">
+            <div class="input-title title">Input</div>
+            <textarea class="input-textarea"></textarea>
+        </div>
+    </div>
+    <footer>
             <p>Copyright of Hack Club ITER 2021</p>
-        </footer>
-
-   <script src="./JS/index.js"></script>
-  </div>
- </body>
+    </footer>
+</main>
+</body>
 </html>
