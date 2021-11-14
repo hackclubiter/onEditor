@@ -29,7 +29,8 @@ main{
     justify-content: space-between;
     align-items: center;
     margin-bottom: 1em;
-    background-color: #000000;
+    background-color: #3c4858;
+    border-radius: 10px;
 }
 .header-left{
     display: flex;
