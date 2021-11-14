@@ -45,11 +45,11 @@
         </div>
         <div class="output">
             <div class="output-title title">Output</div>
-            <textarea readonly="readonly" id="output" placeholder="Output" class="output-textarea"></textarea>
+            <textarea readonly="readonly" id="output"  placeholder="Output" class="output-textarea"></textarea>
         </div>
         <div class="button-container">
             <button id="run" onclick="run()" class="run-button button">Run</button>
-            <button class="clear-button button">Clear</button>
+            <button onclick="javascript:eraseText()" class="clear-button button">Clear All</button>
         </div>
         <div class="input">
             <div class="input-title title">Input</div>
@@ -62,5 +62,12 @@
     </footer>
 </main>
 <script src="./JS/index.js"></script>
+<script>
+    function eraseText() {
+    document.getElementById("source").value = "";
+    document.getElementById("output").value = "";
+    document.getElementById("input").value = "";
+}
+</script>
 </body>
 </html>
