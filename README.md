@@ -1,4 +1,4 @@
-# Online IDE
+<h1 align="center">onEditor</h1>
 
-- Deployment Status
-- [![Netlify Status](https://api.netlify.com/api/v1/badges/f3fb2737-53c5-47eb-bf7a-447770b4d8a4/deploy-status)](https://app.netlify.com/sites/ide-hackclubiter/deploys)
+<a align="center" href="oneditor.netlify.app"><img src="https://user-images.githubusercontent.com/39031660/130569154-edacf058-e8b9-4e16-bacc-248827e47ba6.png"></a>
+<p align="center"><i>One Editor for All</i></p>
